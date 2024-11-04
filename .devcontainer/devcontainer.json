@@ -1,0 +1,22 @@
+{
+	"name": "Ansible",
+	"image": "ghcr.io/ansible/community-ansible-dev-tools:latest",
+	"containerUser": "root",
+	"forwardPorts": [],
+	"runArgs": [
+		"--privileged",
+		"--device",
+		"/dev/fuse",
+		"--hostname=ansible-dev-container",
+		"--network", "host"
+	],
+	"updateRemoteUserUID": true,
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"redhat.ansible"
+			]
+		}
+	},
+	"postCreateCommand": "curl -L https://github.com/mitogen-hq/mitogen/releases/download/v0.3.15/mitogen-0.3.15.tar.gz | tar -xz -C /opt"
+}
