@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -34,7 +34,7 @@ jobs:
           mv canardconfit-hashlib-*.tar.gz build/$version/
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ansible_module_build
           path: build/
@@ -45,19 +45,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-        
+        uses: actions/checkout@v4
+
       - name: Download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ansible_module_build
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Publish to Ansible Galaxy
         run: |
           version=$(git describe --tags --always)
-          ansible-galaxy collection publish build/$version/canardconfit-hashlib-*.tar.gz --api-key $GALAXY_API_KEY
+          ansible-galaxy collection publish hashlib/$version/canardconfit-hashlib-*.tar.gz --api-key $GALAXY_API_KEY
