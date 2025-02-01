@@ -1,5 +1,7 @@
 # Ansible Collection - canardconfit.hashlib
 
+> **/!\\** This repository has been abandoned in favor of [`canardconfit.ansible_utils`] (https://github.com/CanardConfit/ansible_utils).
+
 This is an Ansible Collection that provides tools from [hashlib library](https://docs.python.org/3/library/hashlib.html).
 
 ## Getting Started
